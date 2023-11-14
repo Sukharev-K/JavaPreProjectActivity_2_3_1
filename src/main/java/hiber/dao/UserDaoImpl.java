@@ -29,19 +29,16 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    @Transactional
     public User showUserById(int id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    @Transactional
     public void save(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
     public void update(int id, User updatedUser) {
         User userToBeUpdate = showUserById(id);
         userToBeUpdate.setFirstName(updatedUser.getFirstName());
@@ -50,7 +47,6 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    @Transactional
     public void delete(int id) {
         User deleteUser = entityManager.find(User.class, id);
         if (deleteUser != null) {
