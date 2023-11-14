@@ -2,9 +2,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.mvn/
-.idea/
-/target/
+.mvn/wrapper
+.idea
+target
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
