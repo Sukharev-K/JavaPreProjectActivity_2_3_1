@@ -1,5 +1,6 @@
 package web.controller;
 
+import hiber.service.UserService;
 import hiber.service.UserServiceImp;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/users")
 public class UsersController {
-
-    private final UserServiceImp userServiceImp;
+    private final UserService userServiceImp;
 
     @Autowired
     public UsersController(UserServiceImp userServiceImp) {
         this.userServiceImp = userServiceImp;
     }
-
-
-
 
     @GetMapping()
     public String printUsersOrShowUserById(
@@ -45,15 +42,11 @@ public class UsersController {
         return "redirect:/users";
     }
 
-
     @GetMapping("/edit")
     public String edit(Model model, @RequestParam(name = "id") int id) {
         model.addAttribute("user", userServiceImp.showUserById(id));
         return "edit";
     }
-
-
-
 
     @PostMapping
     public String update(@ModelAttribute("user") User user, @RequestParam(name = "id") int id) {
@@ -66,7 +59,6 @@ public class UsersController {
         userServiceImp.delete(id);
         return "redirect:/users";
     }
-
  }
 
 
